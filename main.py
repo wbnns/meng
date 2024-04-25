@@ -16,7 +16,7 @@ safe_attributes = ['is_open_source', 'is_in_dex', 'is_true_token', 'trust_list',
 
 def fetch_token_data(address):
     data = Token(access_token=None).token_security(
-        chain_id="8453",
+        chain_id="1",
         addresses=[address],
         **{"_request_timeout": 10}
     )
