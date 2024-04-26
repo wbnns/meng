@@ -1,64 +1,111 @@
+# Meng
 
-# Meng: Ethereum Token Risk Analyzer
-
-Meng is an open-source tool designed to analyze Ethereum token contracts for potential risks using the GoPlus Token Risk Classification API. It evaluates a set of risk-indicating and safety attributes to determine the overall risk level of the token contract.
+Meng is a Python application that analyzes the security and potential risks of Ethereum tokens using the GoPlus Token Security API and Rug Pull Detection API. It generates a detailed report in Markdown format and stores the analysis data in an SQLite database.
 
 ## Features
 
-- **Token Risk Analysis**: Evaluates Ethereum contract addresses to identify attributes that indicate higher risks or safety.
-- **Proxy Contract Support**: Handles proxy contracts by allowing further analysis on implementation contract addresses.
-- **Command-Line Interface**: Provides a CLI for easy input of Ethereum contract addresses and displays analysis results.
+- Retrieves token security and rug pull risk data from the GoPlus API
+- Generates a comprehensive Markdown report with the analysis results
+- Saves the report to a file named after the token symbol and current date
+- Stores the JSON data returned by each API, along with the contract address and the current date, in an SQLite database
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+- Python 3.x
+- `goplus` library
 
-- Python 3.x installed on your machine
-- Access to the GoPlus Token Risk Classification API
+## Installation
 
-### Installation
+1. Clone the repository:
+   `git clone https://github.com/your-username/meng.git`
 
-First, clone the repository to your local machine:
-
-\```bash
-git clone https://github.com/yourusername/meng.git
-cd meng
-\```
-
-Install the required dependencies:
-
-\```bash
-pip install -r requirements.txt
-\```
-
-### Configuration
-
-To run Meng, simply use the command below. Ensure you have set up any necessary API access configurations within your script:
-
-\```bash
-python main.py
-\```
+2. Install the required dependencies:
+   `pip install goplus`
 
 ## Usage
 
-Run the script from the command line:
+1. Run the script:
+   `python main.py`
 
-\```bash
-python main.py
-\```
+2. Enter the token contract address when prompted.
 
-Enter the Ethereum contract address when prompted. The tool will perform the risk analysis and display the results in the command line.
+3. The script will analyze the token and generate a report. The report will be displayed in the console and saved as a Markdown file in the `reports` folder with the filename format `<token_symbol>_<current_date>.md`.
 
-## Contributing
+4. The JSON data returned by each API, along with the contract address and the current date, will be stored in an SQLite database named `token_data.db`.
 
-Contributions to Meng are welcome! Please adhere to the following steps for contributing:
+## Report Format
 
-1. Fork the repository.
-2. Create your feature branch (\`git checkout -b my-new-feature\`).
-3. Commit your changes (\`git commit -am 'Add some feature'\`).
-4. Push to the branch (\`git push origin my-new-feature\`).
-5. Create a new Pull Request.
+The generated report includes the following sections:
+
+- Token Analysis Report
+- Date
+- Report date
+- Token Security Analysis
+- Raw JSON data from the token security API
+- Token Security Analysis Breakdown
+- Open Source
+- Proxy Contract
+- Mint Function
+- Owner Address
+- Can Take Back Ownership
+- Owner Can Change Balance
+- Hidden Owner
+- Selfdestruct
+- External Call
+- In DEX
+- Buy Tax
+- Sell Tax
+- Can't Buy
+- Can't Sell All
+- Slippage Modifiable
+- Honeypot
+- Transfer Pausable
+- Blacklist
+- Whitelist
+- Anti Whale
+- Anti Whale Modifiable
+- Trading Cooldown
+- Personal Slippage Modifiable
+- Token Name
+- Token Symbol
+- Holder Count
+- Total Supply
+- Creator Address
+- Creator Balance
+- Creator Percent
+- LP Holder Count
+- LP Total Supply
+- Is True Token
+- Is Airdrop Scam
+- Is In Trust List
+- Other Potential Risks
+- Note
+- Fake Token
+- Rug Pull Security Analysis
+- Raw JSON data from the rug pull security API
+- Rug Pull Security Analysis Breakdown
+- Owner Name
+- Owner Address
+- Owner Type
+- Privilege Withdraw
+- Cannot Withdraw
+- Contract Verified
+- Blacklist Function
+- Contract Name
+- Self-Destruct
+- Potential Approval Abuse
+- Proxy Contract
+
+## Database Schema
+
+The SQLite database `token_data.db` contains a table named `token_data` with the following schema:
+
+- `id` (INTEGER): Primary key
+- `contract_address` (TEXT): The token contract address
+- `token_security_data` (TEXT): The JSON data returned by the token security API
+- `rug_pull_data` (TEXT): The JSON data returned by the rug pull security API
+- `date` (TEXT): The date when the analysis was performed
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the [MIT License](LICENSE.md).
