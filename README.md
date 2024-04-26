@@ -1,5 +1,9 @@
 # Meng
 
+![Alt](https://repobeats.axiom.co/api/embed/42b94a1c432bc7812ecee4afdefcc26c5a51f6df.svg "Repobeats analytics image")
+
+## Overview
+
 Meng is a Python application that analyzes the security and potential risks of Ethereum tokens using the GoPlus Token Security API and Rug Pull Detection API. It generates a detailed report in Markdown format and stores the analysis data in an SQLite database.
 
 ## Features
