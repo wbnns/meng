@@ -128,10 +128,13 @@ def generate_report(result, current_date):
     report += "### Rug Pull Security Analysis Breakdown\n"
     rug_pull_data = result["rug_pull_security"]["result"]
     if rug_pull_data:
-        owner = rug_pull_data.get("owner", {})
-        report += f"- Owner Name: {owner.get('owner_name', 'Unknown')}\n"
-        report += f"- Owner Address: {owner.get('owner_address', 'Unknown')}\n"
-        report += f"- Owner Type: {owner.get('owner_type', 'Unknown')}\n"
+        owner = rug_pull_data.get("owner")
+        if owner:
+            report += f"- Owner Name: {owner.get('owner_name', 'Unknown')}\n"
+            report += f"- Owner Address: {owner.get('owner_address', 'Unknown')}\n"
+            report += f"- Owner Type: {owner.get('owner_type', 'Unknown')}\n"
+        else:
+            report += "- Owner: No owner information available.\n"
 
         report += f"- Privilege Withdraw: {'Yes' if rug_pull_data.get('privilege_withdraw') == 1 else 'No' if rug_pull_data.get('privilege_withdraw') == 0 else 'Unknown'}\n"
         report += f"- Cannot Withdraw: {'Yes' if rug_pull_data.get('withdraw_missing') == 1 else 'No' if rug_pull_data.get('withdraw_missing') == 0 else 'Unknown'}\n"
