@@ -4,7 +4,7 @@
 
 ## Overview
 
-Meng is a Python application that analyzes the security and potential risks of Ethereum tokens using the GoPlus Token Security API and Rug Pull Detection API. It generates a detailed report in Markdown format and stores the analysis data in an SQLite database.
+Meng is a Python application that analyzes the security and potential risks of Ethereum tokens using the GoPlus Token Security API and Rug Pull Detection API. It generates a detailed report in Markdown format and stores the analysis data in an SQLite database. The results should not be considered financial/investment advice and are for informational purposes only. Users should perform their own due diligence and [DYOR](https://hackmd.io/@wbnns/dyor-do-your-own-research).
 
 ## Features
 
